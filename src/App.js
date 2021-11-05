@@ -52,12 +52,12 @@ function App() {
           toggleTab3={selectTab3}
         />
         
-        {isTab1Active ? <Tab1 /> : null}
-        {isTab2Active ? <Tab2 /> : null}
+        {isTab1Active ? <Tab1  selectTab2={selectTab2} /> : null}
+        {isTab2Active ? <Tab2  selectTab3={selectTab3} /> : null}
         {isTab3Active ? <Tab3 /> : null}
         
 
-        <FooterForm btnText='Next' isTab3Active={isTab3Active} />
+        
       </Layout>
     </>
   );
