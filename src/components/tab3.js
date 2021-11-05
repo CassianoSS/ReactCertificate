@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LabeledInput from "./core/labeled-input";
 import Button from "./core/button";
 import styled from "styled-components";
@@ -12,12 +12,25 @@ const FormBox = styled.div`
   margin: 30px 0;
   background-color: inherit;
 `;
-function Tab3() {
+function Tab3(formManagement, formData) {
   const [certificates, setCertificates] = useState("");
+  const [teamName, setTeamName] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [graduation, setGraduation] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
+    formManagement({ certificates, teamName, institution, graduation });
     alert("SUCESSO!!!");
   }
+
+  useEffect(() => {
+    if(formData){
+      setCertificates(formData.certificates);
+      setTeamName(formData.teamName);
+      setInstitution(formData.institution);
+      setGraduation(formData.graduation);
+    }
+  }, []);
   return (
     <>
       <form style={{ backgroundColor: "white" }} onSubmit={handleSubmit}>
@@ -35,7 +48,7 @@ function Tab3() {
               <>
                 <FontAwesomeIcon
                   icon={faPlus}
-                  style={{ backgroundColor: "inherit", marginRight:5 }}
+                  style={{ backgroundColor: "inherit", marginRight: 5 }}
                 />
                 More
               </>
@@ -46,29 +59,45 @@ function Tab3() {
         <LabeledInput
           inputLabel="Team Name*"
           placeholder="linkedin.com/in/foo-bar-3a0560104/"
+          onChange={(e) => [setTeamName(e.target.value)]}
+          value={teamName}
+          type='text'
+          required
+
         />
 
         <LabeledInput
           inputLabel="Institution*"
           placeholder="Universidade da Paraíba"
+          onChange={(e) => [setInstitution(e.target.value)]}
+          value={institution}
+          type='text'
+          required
+
         />
 
         <LabeledInput
           inputLabel="Graduation*"
           placeholder="Ciência da Computação"
+          onChange={(e) => [setGraduation(e.target.value)]}
+          value={graduation}
+          type='text'
+          required
         />
-        <Button
-          type="submit"
-          txt={
-            <>
-              Finish
-              <FontAwesomeIcon
-                icon={faCheck}
-                style={{ backgroundColor: "inherit", marginLeft:5 }}
-              />
-            </>
-          }
-        />
+        <FormBox>
+          <Button
+            type="submit"
+            txt={
+              <>
+                Finish
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  style={{ backgroundColor: "inherit", marginLeft: 5 }}
+                />
+              </>
+            }
+          />
+        </FormBox>
       </form>
     </>
   );

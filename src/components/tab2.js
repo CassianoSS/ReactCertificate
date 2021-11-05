@@ -10,21 +10,20 @@ const Footer = styled.div`
   background-color: inherit;
 `;
 
-function Tab2({selectTab3}) {
+function Tab2({ selectTab3, setlockTab3, formManagement, formData }) {
   const [linkedIn, setLinkedIn] = useState("");
   const [gitHub, setGitHub] = useState("");
-  
+
   function handleSubmit(e) {
     e.preventDefault();
+    setlockTab3(false);
     selectTab3();
+    formManagement({linkedIn, gitHub});
   }
 
   return (
     <>
-      <form 
-        onSubmit={handleSubmit}
-        style={{ backgroundColor: "white" }}      
-      >
+      <form onSubmit={handleSubmit} style={{ backgroundColor: "white" }}>
         <LabeledInput
           type="url"
           inputLabel="LinkedIn"

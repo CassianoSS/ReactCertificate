@@ -48,7 +48,7 @@ const Footer = styled.div`
   background-color: inherit;
 `;
 
-function Tab1({ selectTab2 }) {
+function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
   const [fullName, setFullName] = useState("");
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
@@ -57,16 +57,29 @@ function Tab1({ selectTab2 }) {
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [age, setAge] = useState("");
+  const [checkBox, setcheckBox] = useState(false);
 
 
     
   function handleSubmit(e) {
     e.preventDefault();
+    setlockTab2(false);
     selectTab2();
+    formManagement({fullName, nickname, email, phone, day, month, year, age, checkBox});
   }
 
   useEffect(() => {
-
+    if(formData){
+      setFullName(formData.fullName);
+      setNickname(formData.nickname);
+      setEmail(formData.email);
+      setPhone(formData.phone);
+      setDay(formData.day);
+      setMonth(formData.month);
+      setYear(formData.year);
+      setAge(formData.age);     
+      setcheckBox(formData.checkBox); 
+    }
   }, [])
 
   return (
@@ -144,6 +157,9 @@ function Tab1({ selectTab2 }) {
         </BdayBox>
         <LabeledCheckbox 
             label=" I accept the terms and privacy." 
+            checked={checkBox}
+            
+            setChecked={setcheckBox}
             required
         />
         <Footer>
