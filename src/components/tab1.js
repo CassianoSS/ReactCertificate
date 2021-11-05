@@ -59,17 +59,25 @@ function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
   const [age, setAge] = useState("");
   const [checkBox, setcheckBox] = useState(false);
 
-
-    
   function handleSubmit(e) {
     e.preventDefault();
     setlockTab2(false);
     selectTab2();
-    formManagement({fullName, nickname, email, phone, day, month, year, age, checkBox});
+    formManagement({
+      fullName,
+      nickname,
+      email,
+      phone,
+      day,
+      month,
+      year,
+      age,
+      checkBox,
+    });
   }
 
   useEffect(() => {
-    if(formData){
+    if (formData) {
       setFullName(formData.fullName);
       setNickname(formData.nickname);
       setEmail(formData.email);
@@ -77,10 +85,10 @@ function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
       setDay(formData.day);
       setMonth(formData.month);
       setYear(formData.year);
-      setAge(formData.age);     
-      setcheckBox(formData.checkBox); 
+      setAge(formData.age);
+      setcheckBox(formData.checkBox);
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -97,8 +105,8 @@ function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
         <LabeledInput
           inputLabel="Nickname"
           placeholder="Juanito"
-            onChange={(e) => [setNickname(e.target.value)]}
-            value={nickname}
+          onChange={(e) => [setNickname(e.target.value)]}
+          value={nickname}
         />
         <Contato>
           <EmailBox>
@@ -106,65 +114,74 @@ function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
               type="email"
               inputLabel="Email*"
               placeholder="foo@bar.com"
-                onChange={(e) => [setEmail(e.target.value)]}
-                value={email}
+              onChange={(e) => [setEmail(e.target.value)]}
+              value={email}
               required
             />
           </EmailBox>
           <PhoneBox>
-            <LabeledInput 
-            type="tel"
-            inputLabel="Phone*" 
-            // pattern="([0-9]{2})[0-9]{5}[0-9]{4}"
-            placeholder="(00) 00000-0000" 
-            onChange={(e) => [setPhone(e.target.value)]}
-            value={phone}
-            
+            <LabeledInput
+              type="tel"
+              inputLabel="Phone*"
+              // pattern="([0-9]{2})[0-9]{5}[0-9]{4}"
+              placeholder="(00) 00000-0000"
+              onChange={(e) => [setPhone(e.target.value)]}
+              value={phone}
             />
           </PhoneBox>
         </Contato>
         <BdayTitle>Birthday*</BdayTitle>
         <BdayBox>
           <BdayDate>
-            <LabeledInput 
-            inputLabel="Day*" 
-            placeholder=" " 
-            type='number'
-            
+            <LabeledInput
+              inputLabel="Day*"
+              placeholder=" "
+              type="number"
+              onChange={(e) => [setDay(e.target.value)]}
+              value={day}
+              required
             />
           </BdayDate>
           <BdayDate>
-            <LabeledInput 
-            inputLabel="Month*" 
-            placeholder=" " 
-            type='number'
+            <LabeledInput
+              inputLabel="Month*"
+              placeholder=" "
+              type="number"
+              onChange={(e) => [setMonth(e.target.value)]}
+              value={month}
+              required
             />
           </BdayDate>
           <BdayDate>
-            <LabeledInput 
-            inputLabel="Year*" 
-            placeholder=" " 
-            type='number'
+            <LabeledInput
+              inputLabel="Year*"
+              placeholder=" "
+              type="number"
+              onChange={(e) => [setYear(e.target.value)]}
+              value={year}
+              required
             />
           </BdayDate>
           <BdayDate>
-            <LabeledInput 
-            inputLabel="Age*" 
-            placeholder=" " 
-            type='number'
+            <LabeledInput
+              inputLabel="Age*"
+              placeholder=" "
+              type="number"
+              onChange={(e) => [setAge(e.target.value)]}
+              value={age}
+              required
             />
           </BdayDate>
         </BdayBox>
-        <LabeledCheckbox 
-            label=" I accept the terms and privacy." 
-            checked={checkBox}
-            
-            setChecked={setcheckBox}
-            required
+        <LabeledCheckbox
+          label=" I accept the terms and privacy."
+          checked={checkBox}
+          setChecked={setcheckBox}
+          required
         />
         <Footer>
           <Button
-            type="submit"            
+            type="submit"
             txt={
               <>
                 Next

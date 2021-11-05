@@ -16,8 +16,9 @@ function App() {
   const [formData, setformData] = useState({});
 
   function formManagement(data) {
-    console.log(data);
+    
     setformData(data);
+    console.log(data);
   }
 
   function selectTab1() {

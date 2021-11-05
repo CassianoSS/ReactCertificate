@@ -4,7 +4,7 @@ import Button from "./core/button";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faCheck, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const FormBox = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ function Tab3(formManagement, formData) {
   }
 
   useEffect(() => {
-    if(formData){
+    if (formData) {
       setCertificates(formData.certificates);
       setTeamName(formData.teamName);
       setInstitution(formData.institution);
@@ -41,6 +41,10 @@ function Tab3(formManagement, formData) {
           value={certificates}
           required
         />
+        {/* <FontAwesomeIcon
+          icon={faHeart}
+          style={{ backgroundColor: "inherit", marginRight: 5 }}
+        /> */}
         <FormBox>
           <Button
             type="button"
@@ -61,9 +65,8 @@ function Tab3(formManagement, formData) {
           placeholder="linkedin.com/in/foo-bar-3a0560104/"
           onChange={(e) => [setTeamName(e.target.value)]}
           value={teamName}
-          type='text'
+          type="text"
           required
-
         />
 
         <LabeledInput
@@ -71,9 +74,8 @@ function Tab3(formManagement, formData) {
           placeholder="Universidade da Paraíba"
           onChange={(e) => [setInstitution(e.target.value)]}
           value={institution}
-          type='text'
+          type="text"
           required
-
         />
 
         <LabeledInput
@@ -81,7 +83,7 @@ function Tab3(formManagement, formData) {
           placeholder="Ciência da Computação"
           onChange={(e) => [setGraduation(e.target.value)]}
           value={graduation}
-          type='text'
+          type="text"
           required
         />
         <FormBox>

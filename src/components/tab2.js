@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LabeledInput from "./core/labeled-input";
 import Button from "./core/button.js";
 import styled from "styled-components";
@@ -18,8 +18,15 @@ function Tab2({ selectTab3, setlockTab3, formManagement, formData }) {
     e.preventDefault();
     setlockTab3(false);
     selectTab3();
-    formManagement({linkedIn, gitHub});
+    formManagement({ linkedIn, gitHub });
   }
+
+  useEffect(() => {
+    if(formData){
+      setLinkedIn(formData.linkedIn);
+      setGitHub(formData.gitHub);
+    }    
+  }, [])
 
   return (
     <>
