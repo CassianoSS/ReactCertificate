@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LabeledInput from "./core/labeled-input";
 import Button from "./core/button.js";
 import styled from "styled-components";
@@ -10,21 +10,26 @@ const Footer = styled.div`
   background-color: inherit;
 `;
 
-function Tab2({selectTab3}) {
+function Tab2({ handleNextTab2, formManagement, formData }) {
   const [linkedIn, setLinkedIn] = useState("");
   const [gitHub, setGitHub] = useState("");
-  
+
   function handleSubmit(e) {
-    e.preventDefault();
-    selectTab3();
+    e.preventDefault();       
+    handleNextTab2();
+    formManagement({ linkedIn, gitHub });
   }
+
+  useEffect(() => {
+    if(formData){
+      setLinkedIn(formData.linkedIn);
+      setGitHub(formData.gitHub);
+    }    
+  }, [])
 
   return (
     <>
-      <form 
-        onSubmit={handleSubmit}
-        style={{ backgroundColor: "white" }}      
-      >
+      <form onSubmit={handleSubmit} style={{ backgroundColor: "white" }}>
         <LabeledInput
           type="url"
           inputLabel="LinkedIn"
