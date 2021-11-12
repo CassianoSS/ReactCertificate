@@ -48,7 +48,7 @@ const Footer = styled.div`
   background-color: inherit;
 `;
 
-function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
+function Tab1({ handleNextTab1, formManagement, formData }) {
   const [fullName, setFullName] = useState("");
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
@@ -60,9 +60,8 @@ function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
   const [checkBox, setcheckBox] = useState(false);
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setlockTab2(false);
-    selectTab2();
+    e.preventDefault();    
+    handleNextTab1();
     formManagement({
       fullName,
       nickname,
@@ -74,7 +73,7 @@ function Tab1({ selectTab2, setlockTab2, formManagement, formData }) {
       age,
       checkBox,
     });
-  }
+  }   
 
   useEffect(() => {
     if (formData) {

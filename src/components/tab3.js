@@ -12,13 +12,16 @@ const FormBox = styled.div`
   margin: 30px 0;
   background-color: inherit;
 `;
-function Tab3(formManagement, formData) {
+function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
   const [certificates, setCertificates] = useState("");
   const [teamName, setTeamName] = useState("");
   const [institution, setInstitution] = useState("");
   const [graduation, setGraduation] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
+    setlockTab2(false);
+    setlockTab3(false);
     formManagement({ certificates, teamName, institution, graduation });
     alert("SUCESSO!!!");
   }

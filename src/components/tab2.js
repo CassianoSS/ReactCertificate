@@ -10,14 +10,13 @@ const Footer = styled.div`
   background-color: inherit;
 `;
 
-function Tab2({ selectTab3, setlockTab3, formManagement, formData }) {
+function Tab2({ handleNextTab2, formManagement, formData }) {
   const [linkedIn, setLinkedIn] = useState("");
   const [gitHub, setGitHub] = useState("");
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setlockTab3(false);
-    selectTab3();
+    e.preventDefault();       
+    handleNextTab2();
     formManagement({ linkedIn, gitHub });
   }
 

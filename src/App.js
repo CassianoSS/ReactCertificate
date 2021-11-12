@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GlobalStyle } from "./components/GlobalStyle.js";
 import { Layout } from "./components/Layout.js";
 import { Title } from "./components/Title.js";
@@ -16,16 +16,16 @@ function App() {
   const [formData, setformData] = useState({});
 
   function formManagement(data) {
-    
-    setformData(data);
-    console.log(data);
+    setformData({ ...formData, ...data });
   }
+  console.log(formData);
 
   function selectTab1() {
     setIsTab1Active(true);
     setIsTab2Active(false);
     setIsTab3Active(false);
   }
+
   function selectTab2() {
     if (!lockTab2) {
       setIsTab2Active(true);
@@ -34,12 +34,37 @@ function App() {
     }
   }
 
-  function selectTab3() {
+  function selectTab3(){
     if (!lockTab3) {
       setIsTab3Active(true);
       setIsTab1Active(false);
       setIsTab2Active(false);
     }
+  }
+
+  useEffect(() => {
+    if (!lockTab2) {
+      setIsTab2Active(true);
+      setIsTab1Active(false);
+      setIsTab3Active(false);
+    }
+  }, [lockTab2]);
+
+  useEffect(() => {
+    if (!lockTab3) {
+      setIsTab3Active(true);
+      setIsTab1Active(false);
+      setIsTab2Active(false);
+    }
+  }, [lockTab3]);
+
+  function handleNextTab1(){
+    setlockTab2(false);
+    selectTab2();
+  }
+  function handleNextTab2(){
+    setlockTab3(false);
+    selectTab3();
   }
 
   return (
@@ -58,21 +83,25 @@ function App() {
 
         {isTab1Active ? (
           <Tab1
-            selectTab2={selectTab2}
             setlockTab2={setlockTab2}
             formManagement={formManagement}
             formData={formData}
+            selectTab2={selectTab2}
+            handleNextTab1={handleNextTab1}
           />
         ) : null}
         {isTab2Active ? (
           <Tab2
-            selectTab3={selectTab3}
             setlockTab3={setlockTab3}
+            selectTab3={selectTab3}
             formData={formData}
             formManagement={formManagement}
+            handleNextTab2={handleNextTab2}
           />
         ) : null}
-        {isTab3Active ? <Tab3 /> : null}
+        {isTab3Active ? (
+          <Tab3 formManagement={formManagement} formData={formData} setlockTab2={setlockTab2} setlockTab3={setlockTab3} />
+        ) : null}
       </Layout>
     </>
   );
