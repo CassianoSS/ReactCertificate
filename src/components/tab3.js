@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import LabeledInput from "./core/labeled-input";
 import Button from "./core/button";
 import styled from "styled-components";
+import Input from "./core/input-icon";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faCheck, faHeart } from "@fortawesome/free-solid-svg-icons";
-
+import { faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FaHeart } from "react-icons/fa";
+import Heart from "../assets/heart.svg";
 const FormBox = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -17,13 +19,14 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
   const [teamName, setTeamName] = useState("");
   const [institution, setInstitution] = useState("");
   const [graduation, setGraduation] = useState("");
+  const [iconClick, setIconClick] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     setlockTab2(false);
     setlockTab3(false);
     formManagement({ certificates, teamName, institution, graduation });
-    alert("SUCESSO!!!");
+    alert(formData.certificates);
   }
 
   useEffect(() => {
@@ -37,17 +40,23 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
   return (
     <>
       <form style={{ backgroundColor: "white" }} onSubmit={handleSubmit}>
-        <LabeledInput
+        {/* <LabeledInput
           inputLabel="Certificates"
           placeholder="github.com/in/foo-bar-3a0560104/"
           onChange={(e) => [setCertificates(e.target.value)]}
           value={certificates}
           required
-        />
-        {/* <FontAwesomeIcon
-          icon={faHeart}
-          style={{ backgroundColor: "inherit", marginRight: 5 }}
         /> */}
+        <Input
+          placeholder="Certificates"
+          type="url"
+          fontSize="16px"
+          src={Heart}
+          label="Certificates*"
+          isClicked={iconClick}
+          setClick={setIconClick}
+        />
+
         <FormBox>
           <Button
             type="button"
