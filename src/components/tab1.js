@@ -87,7 +87,7 @@ function Tab1({ handleNextTab1, formManagement, formData }) {
       setAge(formData.age);
       setcheckBox(formData.checkBox);
     }
-  }, []);
+  }, [formData]);
 
   return (
     <>
@@ -181,6 +181,7 @@ function Tab1({ handleNextTab1, formManagement, formData }) {
         <Footer>
           <Button
             type="submit"
+            
             txt={
               <>
                 Next
