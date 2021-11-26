@@ -14,10 +14,10 @@ border-radius: 4px;
 cursor: pointer;
 `;
 
-function Button({ type, txt }) {
+function Button({ type, txt, onClick }) {
 
     return (
-        <Styles type={type}>
+        <Styles type={type} onClick={onClick}>
             {txt}
         </Styles>
     );

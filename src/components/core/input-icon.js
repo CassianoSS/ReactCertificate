@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as heartSolid } from "@fortawesome/free-solid-svg-icons";
 const Field = styled.input`
-  background-color: white;
+  background-color: inherit;
   border: none;
   width: 100%;
   padding: 16px 0;

@@ -3,10 +3,10 @@ import LabeledInput from "./core/labeled-input";
 import Button from "./core/button";
 import styled from "styled-components";
 import Input from "./core/input-icon";
-
+import { CertificateModal } from "./certificateModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FaHeart } from "react-icons/fa";
+
 import Heart from "../assets/heart.svg";
 const FormBox = styled.div`
   display: flex;
@@ -20,6 +20,10 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
   const [institution, setInstitution] = useState("");
   const [graduation, setGraduation] = useState("");
   const [iconClick, setIconClick] = useState(false);
+  const [certificateModal, setCertificateModal] = useState(false);
+
+  const handleClose = () => setCertificateModal(false);
+  const handleOpen = () => setCertificateModal(true)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -48,18 +52,22 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
           required
         /> */}
         <Input
-          placeholder="Certificates"
+          placeholder="github.com/in/foo-bar-3a0560104/"
+          onChange={(e) => [setCertificates(e.target.value)]}
+          value={certificates}
           type="url"
           fontSize="16px"
           src={Heart}
           label="Certificates*"
           isClicked={iconClick}
           setClick={setIconClick}
+          required
         />
 
         <FormBox>
           <Button
             type="button"
+            onClick={handleOpen}
             txt={
               <>
                 <FontAwesomeIcon
@@ -69,6 +77,15 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
                 More
               </>
             }
+          />
+          <CertificateModal
+            certificateModal={certificateModal}
+            closeModal={handleClose}
+            Heart={Heart}
+            // iconClick={iconClick}
+            // setIconClick={setIconClick}
+            certificates={certificates}
+            setCertificates={setCertificates}
           />
         </FormBox>
 
