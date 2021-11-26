@@ -25,7 +25,7 @@ function Tab2({ handleNextTab2, formManagement, formData }) {
       setLinkedIn(formData.linkedIn);
       setGitHub(formData.gitHub);
     }    
-  }, [])
+  }, [formData])
 
   return (
     <>

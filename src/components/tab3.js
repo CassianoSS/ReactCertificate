@@ -5,9 +5,9 @@ import styled from "styled-components";
 import Input from "./core/input-icon";
 import { CertificateModal } from "./certificateModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faCheck, faHeart } from "@fortawesome/free-solid-svg-icons";
+import SuccessModal from "./successModal";
 
-import Heart from "../assets/heart.svg";
 const FormBox = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -21,16 +21,19 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
   const [graduation, setGraduation] = useState("");
   const [iconClick, setIconClick] = useState(false);
   const [certificateModal, setCertificateModal] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
 
   const handleClose = () => setCertificateModal(false);
-  const handleOpen = () => setCertificateModal(true)
+  const handleOpen = () => setCertificateModal(true);
+  const openSuccess = () => setSuccessModal(true);
+  const closeSuccess = () => setSuccessModal(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     setlockTab2(false);
     setlockTab3(false);
     formManagement({ certificates, teamName, institution, graduation });
-    alert(formData.certificates);
+    openSuccess();
   }
 
   useEffect(() => {
@@ -40,7 +43,7 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
       setInstitution(formData.institution);
       setGraduation(formData.graduation);
     }
-  }, []);
+  }, [formData]);
   return (
     <>
       <form style={{ backgroundColor: "white" }} onSubmit={handleSubmit}>
@@ -57,7 +60,7 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
           value={certificates}
           type="url"
           fontSize="16px"
-          src={Heart}
+          src={faHeart}
           label="Certificates*"
           isClicked={iconClick}
           setClick={setIconClick}
@@ -81,11 +84,11 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
           <CertificateModal
             certificateModal={certificateModal}
             closeModal={handleClose}
-            Heart={Heart}
+            Heart={faHeart}
             // iconClick={iconClick}
             // setIconClick={setIconClick}
-            certificates={certificates}
-            setCertificates={setCertificates}
+            // certificates={certificates}
+            // setCertificates={setCertificates}
           />
         </FormBox>
 
@@ -127,6 +130,11 @@ function Tab3({ formManagement, formData, setlockTab2, setlockTab3 }) {
                 />
               </>
             }
+          />
+          <SuccessModal
+            successModal={successModal}
+            onHide={closeSuccess}
+            formData={formData}
           />
         </FormBox>
       </form>
