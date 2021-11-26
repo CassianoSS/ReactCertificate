@@ -27,6 +27,8 @@ const BdayTitle = styled.p`
   font-size: 18px;
   color: #767676;
   background-color: inherit;
+  margin-top: 1rem;
+  margin-bottom: -0.8rem;
 `;
 
 const BdayDate = styled.div`
@@ -181,7 +183,6 @@ function Tab1({ handleNextTab1, formManagement, formData }) {
         <Footer>
           <Button
             type="submit"
-            
             txt={
               <>
                 Next
