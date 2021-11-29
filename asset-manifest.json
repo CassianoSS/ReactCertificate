@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/ReactCertificate/static/js/main.3ce031fb.chunk.js",
+    "main.js.map": "/ReactCertificate/static/js/main.3ce031fb.chunk.js.map",
+    "runtime-main.js": "/ReactCertificate/static/js/runtime-main.369cb4db.js",
+    "runtime-main.js.map": "/ReactCertificate/static/js/runtime-main.369cb4db.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/ReactCertificate/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.4cfc31ab.chunk.js": "/ReactCertificate/static/js/2.4cfc31ab.chunk.js",
+    "static/js/2.4cfc31ab.chunk.js.map": "/ReactCertificate/static/js/2.4cfc31ab.chunk.js.map",
+    "static/js/3.1a01ba0a.chunk.js": "/ReactCertificate/static/js/3.1a01ba0a.chunk.js",
+    "static/js/3.1a01ba0a.chunk.js.map": "/ReactCertificate/static/js/3.1a01ba0a.chunk.js.map",
+    "index.html": "/ReactCertificate/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/ReactCertificate/static/css/2.0a9ec390.chunk.css.map",
+    "static/js/2.4cfc31ab.chunk.js.LICENSE.txt": "/ReactCertificate/static/js/2.4cfc31ab.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.369cb4db.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.4cfc31ab.chunk.js",
+    "static/js/main.3ce031fb.chunk.js"
+  ]
+}
